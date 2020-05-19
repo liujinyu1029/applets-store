@@ -1,4 +1,4 @@
-import globalStore from './globalStore';
+import globalStore from './util/globalStore';
 
 export default (config, _component = Component) => {
   const { $store } = config;
