@@ -1,6 +1,4 @@
-# applets-store -- 专为小程序开发的*状态管理模式*
-
-## 介绍
+# applets-store -- 专为小程序开发的"状态管理模式"
 
 帮助小程序开发者，通过使用 applets-store 提供的 page、component 替代原 Page、Component，即可直接调用\$store，做全局变量管理，并且会同步更新页面。
 
@@ -27,7 +25,8 @@ storePage({
   },
   onShow(){
     let { $store } = this.data;
-    console.log('输出全部全局变量$store',$store)
+    console.log('$store.agreeNum',$store.agreeNum)
+    // 直接对变量赋值即可，不用像小程序通过setData赋值
     $store.agreeNum += 1;
   },
   onChange_agreeNum(newVal) {
