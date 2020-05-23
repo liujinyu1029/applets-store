@@ -1,21 +1,12 @@
-import globalStore from './util/globalStore';
+import getBaseConf from './util/base';
 
 export default (config, _component = Component) => {
-  const { $store } = config;
+  const baseConf = getBaseConf(config);
   const targetConf = {
-    ...config,
-    created() {
-      // 遍历$store中定义的属性集
-      Object.keys($store).forEach(key => {
-        // 监听属性的set事件
-        globalStore.$watch(key, val => {
-          // 触发对应的observer响应
-          let fun = this[$store[key].observer];
-          fun && fun.call(this, val);
-        });
-      });
-      config.created && config.created.call(this);
-    }
+    ...baseConf,
+    created: baseConf.install,
+    attached: baseConf.initStore,
+    detached: baseConf.uninstall
   };
   _component(targetConf);
 };

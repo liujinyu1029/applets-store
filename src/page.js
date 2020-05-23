@@ -1,12 +1,12 @@
-import globalStore from './util/globalStore';
+import getBaseConf from './util/base';
 
 export default (config, _page = Page) => {
+  const baseConf = getBaseConf(config);
   const targetConf = {
-    ...config,
-    onLoad(options = {}) {
-      this.$store = globalStore;
-      config.onLoad && config.onLoad.call(this, options);
-    }
+    ...baseConf,
+    onLoad: baseConf.install,
+    onShow: baseConf.initStore,
+    onUnload: baseConf.uninstall
   };
   _page(targetConf);
 };

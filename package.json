@@ -1,6 +1,6 @@
 {
   "name": "applets-store",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "小程序的全局状态管理工具，你可以理解为小程序版的vuex",
   "main": "src/index.js",
   "scripts": {
